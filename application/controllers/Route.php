@@ -2,14 +2,12 @@
 
 class Route extends CI_Controller {
 
-	var $img_host;
 	var $assets;
 
 	function __construct() {
 		parent::__construct();
 		$this->config->load('setup');
-		$this->img_host = $this->config->item('site_img');
-		$this->assets   = base_url($this->config->item('assets'));
+		$this->assets = base_url($this->config->item('assets'));
 	}
 
 	public function surat($param='surat_masuk') {
