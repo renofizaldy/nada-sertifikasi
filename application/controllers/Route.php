@@ -10,6 +10,23 @@ class Route extends CI_Controller {
 		$this->assets = base_url($this->config->item('assets'));
 	}
 
+	public function dashboard() {
+		if ($this->session->has_userdata('user_id')) {
+			$this->load->model('select');
+			$var['top_title']  = "Dashboard";
+			$var['stylesheet'] = array(
+				$this->assets.'plugins/datatables/datatables.css'
+			);
+			$var['output'] = [
+				'res_total_masuk' => count($this->select->getSurat('surat_masuk')),
+				'res_total_keluar' => count($this->select->getSurat('surat_keluar'))
+			];
+			view('client/ui_dashboard', $var);
+		} else {
+			redirect(base_url('login'));
+		}
+	}
+
 	public function surat($param='surat_masuk') {
 		if ($this->session->has_userdata('user_id')) {
 			$this->load->model('select');

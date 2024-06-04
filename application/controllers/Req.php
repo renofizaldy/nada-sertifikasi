@@ -11,7 +11,7 @@ class Req extends CI_Controller {
 		$this->load->model('select');
 		$qry = $this->select->login();
 		if ($qry) {
-			redirect(base_url('surat/surat_masuk'));
+			redirect(base_url('dashboard'));
 		} else {
 			redirect(base_url('login'));
 		}

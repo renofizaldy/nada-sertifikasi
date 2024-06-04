@@ -5,6 +5,7 @@ $route['default_controller']   = 'route/login';
 $route['404_override']         = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['dashboard']    = 'route/dashboard';
 $route['surat/(:any)'] = 'route/surat/$1';
 $route['print/(:any)'] = 'route/print/$1';
 $route['login']        = 'route/login';

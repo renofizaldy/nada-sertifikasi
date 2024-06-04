@@ -162,9 +162,13 @@
 		.text-right {
 			text-align: right;
 		}
-		.tbody-h tr th,
-		.tbody-r tr td {
+		.full-table th, .full-table td {
+			width: 16.66%; /* adjust the width to fit your needs */
 		}
+		.full-table th {
+			text-align: left;
+		}
+
 	</style>
 </head>
 <body class="A4">
@@ -184,7 +188,7 @@
 					</div>
 				</div>
 				<div>
-					<table style="width: 100%;box-sizing: border-box;">
+					<table class="full-table">
 						<thead class="tbody-h">
 							<tr>
 								<th>No. Surat</th>

@@ -22,6 +22,9 @@
 						<div class="col-lg order-lg-first">
 							<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
 								<li class="nav-item">
+									<a href="<?= base_url('dashboard'); ?>" class="nav-link"><i class="fa fa-dashboard"></i> Dashboard</a>
+								</li>
+								<li class="nav-item">
 									<a href="<?= base_url('surat/surat_masuk'); ?>" class="nav-link"><i class="fa fa-inbox"></i> Surat Masuk</a>
 								</li>
 								<li class="nav-item">
