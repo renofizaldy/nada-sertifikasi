@@ -5,9 +5,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'          => '',
-  'hostname'     => '103.101.225.48:3306',
-  'username'     => 'renofizaldy',
-  'password'     => 'R3n0=f1z4ldY',
+  'hostname'     => 'localhost',
+  'username'     => 'root',
+  'password'     => '',
 	'database'     => 'surat_db', // all_in_one
 	'dbdriver'     => 'mysqli',
 	'dbprefix'     => '',
