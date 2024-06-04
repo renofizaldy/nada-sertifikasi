@@ -15,6 +15,9 @@
 	}
 </style>
 
+<div class="page">
+<div class='page-main'>
+
 <div class="my-3 my-md-5"><div class="container">
 
 	<div class="row">
@@ -46,6 +49,31 @@
 
 </div></div>
 
+<script type="text/javascript">
+	require(['jquery','datatables'], function() {
+		$(document).ready(function() {
+			$('.dataTable').DataTable({
+				"ajax": '<?= $output['url_tables']; ?>',
+				"aoColumnDefs" : [
+					{
+						"bSortable": false,
+						"aTargets" : [ "no-sort" ]
+					}
+				],
+				"oLanguage": {
+					"sSearch"    : "Filter",
+					"sInfo"      : "_START_ - _END_ dari _TOTAL_ Data",
+					"sLengthMenu": "_MENU_ Baris",
+					"oPaginate"  : {
+						"sNext"    : ">",
+						"sPrevious": "<"
+					}
+				}
+			});
+		});
+	});
+</script>
+
 <div id="new_data" class="modal" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -57,6 +85,8 @@
 			</div>
 			<?= form_open('req/post/surat'); ?>
 			<div class="modal-body">
+				<input type="hidden" name="in_jenissurat" value="<?= $output['param']; ?>" />
+
 				<div class="form-group">
 					<label class="form-label">Nomor Surat</label>
 					<input name="in_nomorsurat" type="number" class="form-control" required="" />
@@ -130,8 +160,9 @@
 					<span aria-hidden="true"></span>
 				</button>
 			</div>
-			<?= form_open('req/put/detail', ['autocomplete'=>'off']); ?>
+			<?= form_open('req/put/surat', ['autocomplete'=>'off']); ?>
 			<div class="modal-body">
+				<input type="hidden" name="up_jenissurat" value="<?= $output['param']; ?>" />
 				<input type="hidden" class="form-control" name="data_id">
 
 				<div class="form-group">
@@ -197,30 +228,5 @@
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-	require(['jquery','datatables'], function() {
-		$(document).ready(function() {
-			$('.dataTable').DataTable({
-				"ajax": '<?= $output['url_tables']; ?>',
-				"aoColumnDefs" : [
-					{
-						"bSortable": false,
-						"aTargets" : [ "no-sort" ]
-					}
-				],
-				"oLanguage": {
-					"sSearch"    : "Filter",
-					"sInfo"      : "_START_ - _END_ dari _TOTAL_ Data",
-					"sLengthMenu": "_MENU_ Baris",
-					"oPaginate"  : {
-						"sNext"    : ">",
-						"sPrevious": "<"
-					}
-				}
-			});
-		});
-	});
-</script>
 
 <?php include('foot_nav.php'); ?>

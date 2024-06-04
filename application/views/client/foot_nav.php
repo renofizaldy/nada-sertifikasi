@@ -9,7 +9,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-						Copyright © <?= date("Y"); ?> <a href="#!">Nada Mustika - Poliban</a>. All rights reserved.
+						Copyright © <?= date("Y"); ?> <a href="#!">Nada Soraya - Politeknik Negeri Banjarmasin</a>. All rights reserved.
 					</div>
 				</div>
 			</div>

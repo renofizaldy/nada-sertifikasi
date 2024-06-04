@@ -2,30 +2,29 @@
 
 class Insert extends CI_Model {
 
-	private $suf;
-
 	function __construct() {
 		parent::__construct();
-		$this->config->load('setup');
 	}
 
 	public function surat($a=null) {
 		$this->db->trans_begin();
 
 		$data = [
-			'nomor_surat'   => $this->input->post('in_nomorsurat'),
-			'nama_pengirim' => $this->input->post('in_namapengirim'),
-			'waktu'         => $this->input->post('in_waktu'),
-			'lampiran'      => $this->input->post('in_lampiran'),
-			'perihal'       => $this->input->post('in_perihal'),
-			'nama_penerima' => $this->input->post('in_namapenerima'),
-			'isi_surat'     => $this->input->post('in_isisurat'),
-			'unit_penerbit' => $this->input->post('in_unitpenerbit'),
-			'tempat'        => $this->input->post('in_tempat'),
-			'pengesah'      => $this->input->post('in_pengesah'),
-			'tembusan'      => $this->input->post('in_tembusan'),
+			'jenis'         => $this->input->post('in_jenissurat'),
+			'nomor_surat'   => cleanInput($this->input->post('in_nomorsurat')),
+			'nama_pengirim' => cleanInput($this->input->post('in_namapengirim')),
+			'waktu'         => cleanInput($this->input->post('in_waktu')),
+			'lampiran'      => cleanInput($this->input->post('in_lampiran')),
+			'perihal'       => cleanInput($this->input->post('in_perihal')),
+			'nama_penerima' => cleanInput($this->input->post('in_namapenerima')),
+			'isi_surat'     => cleanInput($this->input->post('in_isisurat')),
+			'unit_penerbit' => cleanInput($this->input->post('in_unitpenerbit')),
+			'tempat'        => cleanInput($this->input->post('in_tempat')),
+			'pengesah'      => cleanInput($this->input->post('in_pengesah')),
+			'tembusan'      => cleanInput($this->input->post('in_tembusan')),
+			'by_user'       => 1
 		];
-		$this->db->insert('surat_masuk', $data);
+		$this->db->insert('surat', $data);
 
 		if ($this->db->trans_status() === false) {
 			$this->db->trans_rollback();

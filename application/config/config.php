@@ -378,7 +378,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'marment_sess';
+$config['sess_cookie_name'] = '_sess_';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = sys_get_temp_dir(); //APPPATH.'session';
 $config['sess_match_ip'] = FALSE;

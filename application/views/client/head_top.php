@@ -22,8 +22,8 @@
 
 	<title><?= $top_title.$site_name; ?></title>
 
-	<link rel="stylesheet" href="<?= base_url('assets/v2/fonts/font-awesome/css/'); ?>font-awesome.min.css">
-	<link rel="stylesheet" href="<?= base_url('assets/v2/fonts/source-sans-pro/'); ?>font-sspro.css">
+	<link rel="stylesheet" href="<?= base_url('assets/tabler/fonts/font-awesome/css/'); ?>font-awesome.min.css">
+	<link rel="stylesheet" href="<?= base_url('assets/tabler/fonts/source-sans-pro/'); ?>font-sspro.css">
 
 	<script src="<?= $assets; ?>js/require.min.js"></script>
 	<script>
@@ -56,8 +56,19 @@
 		.nav-tabs .nav-link {
 			padding: 1rem 0.75rem !important;
 		}
+		.page-center {
+			justify-content: center;
+		}
+		.container-tight {
+			--tblr-gutter-x: calc(1rem * 2);
+			--tblr-gutter-y: 0;
+			width          : 100%;
+			padding-right  : calc(1rem * .5);
+			padding-left   : calc(1rem * .5);
+			margin-right   : auto;
+			margin-left    : auto;
+			max-width      : 30rem;
+		}
 	</style>
 </head>
 <body class="">
-	<div class="page">
-		<div class="page-main">
