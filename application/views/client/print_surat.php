@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Cetak Label</title>
+	<title>Cetak Data Surat</title>
 
 	<?php foreach($stylesheet as $ss): ?>
 		<link rel="stylesheet" type="text/css" href="<?php echo $ss; ?>">
@@ -110,11 +110,9 @@
 			float: left;
 		}
 		.heading {
-
-    		border-bottom: 1px solid #aaa;
-    		padding-bottom: 0.8rem;
-    		margin-bottom: 0.8rem;
-
+			border-bottom: 1px solid #aaa;
+			padding-bottom: 0.8rem;
+			margin-bottom: 0.8rem;
 		}
 		.from-top {
 			margin: 0 0 0 2rem;
@@ -164,6 +162,9 @@
 		.text-right {
 			text-align: right;
 		}
+		.tbody-h tr th,
+		.tbody-r tr td {
+		}
 	</style>
 </head>
 <body class="A4">
@@ -174,59 +175,45 @@
 				<div class='heading'>
 					<div class="d-flex f-11" style="margin-bottom: .3rem">
 						<div class="flex-fill">
-							<img src="<?php echo base_url('assets/v2/images/logo-sm.png'); ?>" style="height: 2.2rem">
 							<div>
-								PT. Gatra Mapan (Div. Marketplace)
+								Nada Soraya
 								<br>
-								JL. Tegal Mapan, No.18, Pakisjajar - Kab. Malang
+								Daftar <?= $top_title; ?>
 							</div>
 						</div>
-						<div class="flex-fill text-right">
-							<img src="<?php echo $output['mplace']['logo']; ?>" style="height: 2.2rem">
-							<div><?php echo $output['mplace']['url']; ?></div>
-						</div>
-					</div>
-					<span>
-					</span>
-				</div>
-				<div class="d-flex" style="padding: .5rem 0;">
-					<div class="flex-fill" style="width:60%;font-size:22pt">
-						Penerima:<br>
-						<strong><?php echo $output['res_invoice'][0]['buyer_nama']; ?></strong><br>
-						<?php echo htmlspecialchars_decode($output['res_invoice'][0]['buyer_alamat']); ?><br>
-						<?php echo $output['res_invoice'][0]['buyer_kota'].", ".$output['res_invoice'][0]['buyer_provinsi']; ?><br>
-						<?php echo $output['res_invoice'][0]['buyer_telepon']; ?>
-					</div>
-					<div class="flex-fill text-right" style="font-size: 17pt">
-						<div>Total Berat: <strong><?php echo $output['res_invoice'][0]['total_berat']; ?>kg</strong></div>
-						<br>
-						<strong><?php echo $output['res_invoice'][0]['info_kurir']; ?></strong>
-						<br>
-						<?php echo $output['res_invoice'][0]['info_resi']; ?>
 					</div>
 				</div>
-
-				<?php if (strlen($output['res_invoice'][0]['buyer_catatan']) > 0) { ?>
-					<div style="background: #feffc8;padding: 1rem;margin: .5rem 0 1rem;color: #6d381f;">
-						<strong>Catatan dari Penerima:</strong>
-						<div style="font-size:17pt;font-style:italic">"<?php echo $output['res_invoice'][0]['buyer_catatan']; ?>"</div>
-					</div>
-				<?php } ?>
-
-				<hr style="border: .5px dashed #CCC;">
-
-				<strong>Daftar Barang:</strong>
-				<?php foreach($output['res_items'] as $items): ?>
-				<div class="d-flex col-gray" style="padding:.5rem 0;font-size: 17pt;">
-					<div style="flex: 1 1 auto;"><?php echo $items['exact_name']; ?></div>
-					<div style="flex: 0 0 auto;"><?php echo $items['quantity']*$items['koli'] ?> Koli (<?php echo $items['berat']; ?>kg)</div>
+				<div>
+					<table style="width: 100%;box-sizing: border-box;">
+						<thead class="tbody-h">
+							<tr>
+								<th>No. Surat</th>
+								<th>Pengirim</th>
+								<th>Waktu</th>
+								<th>Tempat</th>
+								<th>Lampiran</th>
+								<th>Perihal</th>
+							</tr>
+						</thead>
+						<tbody class="tbody-r">
+							<?php foreach($output['res_items'] as $row): ?>
+							<tr>
+								<td><?= $row['nomor_surat']; ?></td>
+								<td><?= $row['nama_pengirim']; ?></td>
+								<td><?= timepub($row['waktu'], 'Y/M/D'); ?></td>
+								<td><?= $row['tempat']; ?></td>
+								<td><?= $row['lampiran']; ?></td>
+								<td><?= $row['perihal']; ?></td>
+							</tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
 				</div>
-				<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
 </section>
 <script type="text/javascript">
-	// <?php if ($output['print']) { ?> window.print(); <?php } ?>
+	// window.print();
 </script>
 </body></html>

@@ -13,8 +13,8 @@ class Route extends CI_Controller {
 	public function surat($param='surat_masuk') {
 		if ($this->session->has_userdata('user_id')) {
 			$this->load->model('select');
-			$title = ($param == 'surat_masuk') ? 'Masuk' : 'Keluar';
-			$var['top_title'] = "Surat ".$title;
+			$title             = ($param == 'surat_masuk') ? 'Masuk' : 'Keluar';
+			$var['top_title']  = "Surat ".$title;
 			$var['stylesheet'] = array(
 				$this->assets.'plugins/datatables/datatables.css'
 			);
@@ -23,6 +23,25 @@ class Route extends CI_Controller {
 				'url_tables' => base_url('req/get/surat_list/'.$param)
 			];
 			view('client/ui_home', $var);
+		} else {
+			redirect(base_url('login'));
+		}
+	}
+
+	public function print($param='surat_masuk') {
+		if ($this->session->has_userdata('user_id')) {
+			$this->load->model('select');
+			$title             = ($param == 'surat_masuk') ? 'Masuk' : 'Keluar';
+			$var['top_title']  = "Surat ".$title;
+			$var['stylesheet'] = [
+				$this->assets.'css/normalize.min.css',
+				$this->assets.'css/paper.css'
+			];
+			$var['output'] = [
+				'param'     => $param,
+				'res_items' => $this->select->getSurat($param)
+			];
+			view('client/print_surat', $var);
 		} else {
 			redirect(base_url('login'));
 		}

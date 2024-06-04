@@ -25,8 +25,9 @@
 			<div class="card">
 				<div class="card-status bg-gray-dark"></div>
 				<div class="card-header">
-					<h3 class="card-title">Surat Keluar</h3>
+					<h3 class="card-title"><?= $top_title; ?></h3>
 					<div class="card-options">
+						<a href="<?= base_url('print/'.$output['param']) ?>" target="blank" class="btn btn-outline-primary btn-sm ml-2"><i class="fa fa-print"></i> Cetak</a>
 						<a href="#" data-target="#new_data" data-toggle="modal" class="btn btn-primary btn-sm ml-2"><i class="fe fe-plus"></i> Tambah</a>
 					</div>
 				</div>
