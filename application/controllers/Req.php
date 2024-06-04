@@ -1100,56 +1100,12 @@ class Req extends CI_Controller {
 	}
 
 	public function post($a=null, $b=null, $c=null) {
-		session_start();
-		if (!isset($_SESSION['level_os'])) {
-			show_404();
-			exit();
-		}
 		$this->config->load('setup');
 		$this->load->model('insert');
 		switch($a) {
-			case 'produk':
+			case 'surat':
 				$qry = $this->insert->produk();
 				alert($qry, null);
-			break;
-			case 'marplace':
-				$qry = $this->insert->marplace();
-				alert($qry, 'marplace');
-			break;
-			case 'invoice':
-				$get_mplace = ($this->input->get('fil_mplace')) ? $this->input->get('fil_mplace') : 'all';
-				$get_status = ($this->input->get('fil_status')) ? $this->input->get('fil_status') : 'all';
-				$get_range  = ($this->input->get('fil_range')) ? $this->input->get('fil_range') : date('Y-m-01,Y-m-t');
-				$filter_get = "?fil_mplace=all&fil_status=all&fil_range=".$get_range;
-				if ($get_mplace OR is_numeric($get_status) OR $get_range) {
-					$filter_get = "?fil_mplace={$get_mplace}&fil_status={$get_status}&fil_range={$get_range}";
-				}
-
-				$qry = $this->insert->invoice();
-				alert($qry, 'invoice/'.$filter_get.'&clear_cart=true');
-			break;
-			case 'biaya_iklan':
-
-				// $bi_marketplace = $this->input->post('marketplace');
-				// $bi_biaya_iklan = $this->input->post('biaya_iklan');
-				// $bi_tahun       = substr($this->input->post('bulan_tahun'), 0, 4);
-				// $bi_bulan       = substr($this->input->post('bulan_tahun'), 5, 2);
-				// print_r($check->result_array());
-				// exit();
-				$data['result'] = false;
-				$qry = $this->insert->biaya_iklan();
-				if ($qry) {
-					$data['result'] = true;
-				}
-				
-				$this->output->set_header('Access-Control-Allow-Origin: *', false);
-				$this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
-				$this->output->set_content_type('application/json');
-				$this->output->set_output(json_encode($data));
-			break;
-			case 'setup':
-				$qry = $this->insert->setup($b, $c);
-				alert($qry, 'route/setup/'.$b);
 			break;
 			default:
 			break;

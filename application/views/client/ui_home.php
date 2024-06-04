@@ -55,7 +55,7 @@
 					<span aria-hidden="true"></span>
 				</button>
 			</div>
-			<?= form_open('req/post/produk'); ?>
+			<?= form_open('req/post/surat'); ?>
 			<div class="modal-body">
 				<div class="form-group">
 					<label class="form-label">Nomor Surat</label>
@@ -132,74 +132,61 @@
 			</div>
 			<?= form_open('req/put/detail', ['autocomplete'=>'off']); ?>
 			<div class="modal-body">
-				<input type="hidden" class="form-control" name="upd_produk_id">
-				<input type="hidden" class="form-control" name="upd_id_order">
-				<div class="form-group text-center">
-					<div id="upd_tipe_produk"></div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="card p-3">
-							<div class="d-flex align-items-center">
-								<div style="margin-top: -5px">
-									<small class="text-muted">HPP Pusat</small>
-									<h5 class="m-0"><span id="upd_hpp_pusat"></span></h5>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card p-3">
-							<div class="d-flex align-items-center">
-								<div style="margin-top: -5px">
-									<small class="text-muted">HPP Cabang</small>
-									<h5 class="m-0"><span id="upd_hpp_cabang"></span></h5>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card p-3">
-							<div class="d-flex align-items-center">
-								<div style="margin-top: -5px">
-									<small class="text-muted">Price List</small>
-									<h5 class="m-0"><span id="upd_price_list"></span></h5>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-8">
-						<div class="form-group">
-							<label class="form-label">Berat (Kg): <span class="text-muted" id="upd_ongkir"></span></label>
-							<input name="upd_berat" type="number" class="form-control" min="0">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label class="form-label">Diskon (%)</label>
-							<input name="upd_diskon" type="number" class="form-control" min="0">
-						</div>
-					</div>
-				</div>
+				<input type="hidden" class="form-control" name="data_id">
+
 				<div class="form-group">
-					<label class="form-label">Harga Jual</label>
-					<input name="upd_netto" type="number" class="form-control is-valid" min="0">
-					<small class="text-success"></small>
+					<label class="form-label">Nomor Surat</label>
+					<input name="up_nomorsurat" type="number" class="form-control" required="" />
 				</div>
-				<div class="form-group mb-0">
-					<label class="form-label">Status</label>
-					<div class="selectgroup w-100">
-						<label class="selectgroup-item">
-							<input type="radio" name="upd_status" value="1" class="selectgroup-input">
-							<span class="selectgroup-button">Aktif</span>
-						</label>
-						<label class="selectgroup-item">
-							<input type="radio" name="upd_status" value="2" class="selectgroup-input">
-							<span class="selectgroup-button">Tidak Aktif</span>
-						</label>
-					</div>
+
+				<div class="form-group">
+					<label class="form-label">Nama Pengirim</label>
+					<input name="up_namapengirim" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Waktu</label>
+					<input name="up_waktu" type="datetime-local" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Lampiran</label>
+					<input name="up_lampiran" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Perihal</label>
+					<input name="up_perihal" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Nama Penerima</label>
+					<input name="up_namapenerima" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Isi Surat</label>
+					<textarea name="up_isisurat" class="form-control" required=""></textarea>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Unit Penerbit</label>
+					<input name="up_unitpenerbit" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Tempat</label>
+					<input name="up_tempat" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Pengesah</label>
+					<input name="up_pengesah" type="text" class="form-control" required="" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Tembusan</label>
+					<input name="up_tembusan" type="text" class="form-control" required="" />
 				</div>
 			</div>
 			<div class="modal-footer">
